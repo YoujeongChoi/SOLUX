@@ -9,6 +9,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
     "underscore": "^1.13.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YoujeongChoi/SOLUX.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YoujeongChoi/SOLUX/issues"
+  },
+  "homepage": "https://github.com/YoujeongChoi/SOLUX#readme"
 }
