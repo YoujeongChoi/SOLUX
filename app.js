@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/route',(req, res) => {
-    res.send('Hello, <img src=/routes.png');
+    res.send('Hello Router, <img src="/route.jpg">');
 })
 
 app.get('/login', (req, res) => {
