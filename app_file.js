@@ -8,8 +8,36 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.set('views', './views_file');
 app.set('view engine', 'jade');
 app.get('/topic/new', function(req, res){
-    res.render('new');
+    fs.readdir('data', function(req, res){
+        if(err){
+            console.log(err);
+            res.status(500).send('Internal Server Error');
+        }
+        res.render('new', {topics:files});
+    })
+    
 })
+app.get(['/topic', '/topic/:id'], function(req, res){
+    fs.readdir('data', function(err, files){
+        if(err){
+            console.log(err);
+            res.status(500).send('Internal Server Error');
+        }
+        var id = req.params.id;
+        if(id){
+            fs.readFile('data/'+id, 'utf8', function(err, data){
+                if(err){
+                    console.log(err);
+                    res.status(500).send('Internal Server Error');
+                }
+                res.render('view', {topics:files, title:id, description:data});
+            });
+        } else {
+            res.render('view', {topics:files, title:'Welcome', description:'Hello, Javascript for server'});
+        }
+    });
+    // res.render('view', {topics:files});
+});
 app.get('/topic', function(req, res){
     // res.render('view', {topics:files});
     fs.readdir('data', function(err, files){
